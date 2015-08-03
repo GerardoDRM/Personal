@@ -1,0 +1,64 @@
+/* General */
+
+$primary-color: #FFFFFF;
+$secondary-color: #2196F3;
+$complete-measure: 100%;
+
+body {
+  background: $primary-color;
+
+}
+
+#logo{
+  width: 70%;
+}
+
+#bottomBar{
+  background: url("../img/amsterdam.jpg") center;
+  background-size:cover;
+  color: $primary-color;
+  height: 335px;
+
+}
+
+paper-toolbar.tall {
+  height: 400px;
+
+}
+
+#topBar {
+  background-color: $secondary-color;
+
+}
+
+#user-card {
+  width: $complete-measure;
+
+}
+
+.header-unit {
+  height: auto;
+  border: 2px solid #000;
+  border-right: none;
+  border-left: none;
+  padding: 20px;
+  width: 100%;
+
+}
+#video-container {
+  position:absolute;
+  top:0%;
+  left:0%;
+  height:$complete-measure;
+  width: $complete-measure;
+  overflow:hidden;
+  video {
+      position: absolute;
+      z-index: 0;
+      width: 100%;
+    .fillWidth {
+  width: $complete-measure;
+
+    }
+  }
+}

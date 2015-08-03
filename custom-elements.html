@@ -1,21 +1,59 @@
 <link rel="import"
       href="bower_components/polymer/polymer.html">
 
+
 <dom-module id="name-tag">
 
-  <template>
-    <div>
-      <!-- any children are rendered here -->
-      <content></content>
-    </div>
-  </template>
+    <template>
+        <div>
+            <!-- any children are rendered here -->
+            <content></content>
+        </div>
+    </template>
 
-  <script>
-  Polymer({
-    is: "name-tag",
-  });
-  </script>
-  
+    <script>
+        Polymer({
+            is: "name-tag",
+        });
+    </script>
+
 </dom-module>
 
 
+<dom-module id="user-view">
+
+    <template>
+        <style>
+            img {
+                width: 200px;
+                height: 200px;
+                border-radius :50%;
+            }
+            .center-user {
+                width: 100%;
+                text-align: center;
+                position: absolute;
+                  z-index: 7;
+                  top: 25px;
+            }
+
+        </style>
+        <div class="center-user">
+            <content></content>
+            <h1>{{name}}</h1>
+        </div>
+
+
+
+    </template>
+
+    <script>
+        Polymer({
+            is: 'user-view',
+            properties: {
+                name: String
+            }
+        });
+    </script>
+
+</dom-module>
