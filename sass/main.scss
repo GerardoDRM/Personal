@@ -1,8 +1,47 @@
+/* Functions */
+@function percent-to-number($val) {
+  @return $val / 100;
+}
+
+@function set-opacity($color) {
+  $lightness: lightness($color);
+  $lightness-number: percent-to-number($lightness);
+  $trans-value: transparentize($color, $lightness-number);
+  @return $trans-value;
+}
+
+$font-size : 16;
+@function em($target, $context: $font-size) {
+  @return ($target / $context) * 1em;
+}
+
+$icon-names: strategy twitter;
+@each $icon-name in $icon-names {
+  .icon-#{$icon-name} {
+    width: 20%;
+  }
+}
+
+@mixin respond-to($media) {
+  @if $media == medium-screen {
+    @media only screen and (min-width: 200px) {
+      @content;
+    }
+  }
+}
+
 /* General */
 
 $primary-color: #FFFFFF;
 $secondary-color: #2196F3;
 $complete-measure: 100%;
+
+
+.test {
+  @include respond-to(medium-screen){
+    width: 20px;
+  }
+}
 
 body {
   background: $primary-color;

@@ -26,7 +26,33 @@
     <link rel="stylesheet" href="sass/main.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="import" href="bower_components/neon-animation/neon-animated-pages.html">
+    <link rel="import" href="bower_components/neon-animation/neon-animatable.html">
+    <link rel="import" href="bower_components/neon-animation/neon-animations.html">
 
+    <style is="custom-style">
+      neon-animatable {
+        color: white;
+        @apply(--layout-horizontal);
+        @apply(--layout-center-center);
+        @apply(--paper-font-display4);
+      }
+      neon-animatable:nth-child(1) {
+        background: var(--paper-red-500);
+      }
+      neon-animatable:nth-child(2) {
+        background: var(--paper-blue-500);
+      }
+      neon-animatable:nth-child(3) {
+        background: var(--paper-orange-500);
+      }
+      neon-animatable:nth-child(4) {
+        background: var(--paper-green-500);
+      }
+      neon-animatable:nth-child(5) {
+        background: var(--paper-purple-500);
+      }
+    </style>
 </head>
 <body class="fullbleed layout vertical">
 <paper-header-panel class="flex">
@@ -35,8 +61,8 @@
             <h1>GR</h1>
         </name-tag>
         <paper-tabs id="tabs" class="top indent" selected="0" role="tablist" horizontal center layout>
-            <paper-tab>Home</paper-tab>
-            <paper-tab>Portfolio</paper-tab>
+            <paper-tab id="Home">Home</paper-tab>
+            <paper-tab id="Portfolio">Portfolio</paper-tab>
             <paper-tab>Contact</paper-tab>
             <paper-tab>About me</paper-tab>
         </paper-tabs>
@@ -45,7 +71,7 @@
         </user-view>
                 <div class="header-unit bottom">
     <div id="video-container">
-        <video preload="auto" autoplay class="fillWidth">
+        <video preload="auto" autoplay loop class="fillWidth">
             <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
             <source id="webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">
             <source id="ogv" src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg">
@@ -58,8 +84,53 @@
     </paper-toolbar>
 </paper-header-panel>
 
+ <template is="dom-bind">
+
+      <div class="toolbar">
+        <button on-click="_onPrevClick">&lt;&lt;</button>
+        <button on-click="_onNextClick">&gt;&gt;</button>
+      </div>
+
+      <neon-animated-pages id="pages" class="flex" selected="[[selected]]" entry-animation="[[entryAnimation]]" exit-animation="[[exitAnimation]]">
+        <neon-animatable>
+            <h1>Hello this is my website</h1>
+        </neon-animatable>
+        <neon-animatable>2</neon-animatable>
+        <neon-animatable>
+            <h1>If you want to talk with me</h1>
+        </neon-animatable>
+        <neon-animatable>4</neon-animatable>
+        <neon-animatable>5</neon-animatable>
+      </neon-animated-pages>
+
+    </template>
+<script>
+      var scope = document.querySelector('template[is="dom-bind"]');
+      scope.selected = 0;
+      scope._onPrevClick = function() {
+        this.entryAnimation = 'slide-from-left-animation';
+        this.exitAnimation = 'slide-right-animation';
+        this.selected = this.selected === 0 ? 4 : (this.selected - 1);
+      }
+      scope._onNextClick = function() {
+        this.entryAnimation = 'slide-from-right-animation';
+        this.exitAnimation = 'slide-left-animation';
+        this.selected = this.selected === 4 ? 0 : (this.selected + 1);
+      }
+
+     var tabs = {
+      one: document.querySelector('#Home'),
+      two: document.querySelector('#Portfolio')
+  };
+
+  tabs.one.addEventListener('click', function(e) {
+     scope.entryAnimation = 'slide-from-right-animation';
+        scope.exitAnimation = 'slide-left-animation';
+        scope.selected = 2;
+  });
 
 
+    </script>
 
 </body>
 </html>
