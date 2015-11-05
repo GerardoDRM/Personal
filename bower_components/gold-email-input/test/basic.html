@@ -23,6 +23,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script src="../../test-fixture/test-fixture-mocha.js"></script>
 
   <script src="../../iron-test-helpers/test-helpers.js"></script>
+  <script src="../../iron-test-helpers/mock-interactions.js"></script>
 
   <link rel="import" href="../../test-fixture/test-fixture.html">
   <link rel="import" href="../gold-email-input.html">
@@ -64,16 +65,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         var error = Polymer.dom(input.root).querySelector('paper-input-error');
         assert.ok(error, 'paper-input-error exists');
-        assert.equal(getComputedStyle(error).display, 'none', 'error is display:none');
+        assert.equal(getComputedStyle(error).visibility, 'hidden', 'error is visibility:hidden');
       });
 
-      test('empty required input shows error', function() {
+      test('empty required input shows error on blur', function(done) {
         var input = fixture('basic');
         forceXIfStamp(input);
 
         var error = Polymer.dom(input.root).querySelector('paper-input-error');
         assert.ok(error, 'paper-input-error exists');
-        assert.notEqual(getComputedStyle(error).display, 'none', 'error is not display:none');
+
+        assert.equal(getComputedStyle(error).visibility, 'hidden', 'error is visibility:hidden');
+
+        input.addEventListener('blur', function(event) {
+          assert(!input.focused, 'input is blurred');
+          assert.notEqual(getComputedStyle(error).visibility, 'hidden', 'error is not visibility:hidden');
+          done();
+        });
+        MockInteractions.focus(input);
+        MockInteractions.blur(input);
       });
 
     });
@@ -101,7 +111,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
 
     suite('valid email address validation', function() {
-    
+
       test('valid email', function() {
         testEmail('email@domain.com', true);
       });
@@ -176,32 +186,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         testEmail('email@domain@domain.com', false);
       });
 
-      test('leading . in address', function() {
-        testEmail('.email@domain.com', false);
-      });
-
-      test('trailing . in address', function() {
-        testEmail('email.@domain.com', false);
-      });
-
-      test('multiple . in address', function() {
-        testEmail('email..email@domain.com', false);
-      });
-
       test('unicode in address', function() {
         testEmail('あいうえお@domain.com', false);
       });
 
       test('text after address', function() {
         testEmail('email@domain.com (Joe Smith)', false);
-      });
-
-      test('missing tld', function() {
-        testEmail('email@domain', false);
-      });
-
-      test('leading dash in front of tld', function() {
-        testEmail('email@-domain', false);
       });
 
       test('multiple dots in domain', function() {

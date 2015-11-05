@@ -4,18 +4,17 @@
     <title>Personal | Gerardo</title>
     <meta name="viewport"
           content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="custom-elements.html">
     <!-- 2. Use an HTML Import to bring in some elements. -->
     <link rel="import" href="bower_components/paper-button/paper-button.html">
     <link rel="import" href="bower_components/paper-input/paper-input.html">
     <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
     <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
     <link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
-    <link rel="import" href="bower_components/paper-header-panel/paper-header-panel.html">
     <link rel="import" href="bower_components/font-roboto/roboto.html">
     <link rel="import" href="bower_components/iron-iconset-svg/iron-iconset-svg.html">
     <link rel="import" href="bower_components/iron-iconset/iron-iconset.html">
+    <link rel="import" href="bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+    <link rel="import" href="bower_components/paper-card/paper-card.html">
 
     <link rel="import" href="bower_components/iron-icons/iron-icons.html">
     <link rel="import" href="bower_components/iron-icons/maps-icons.html">
@@ -29,33 +28,105 @@
     <link rel="import" href="bower_components/neon-animation/neon-animated-pages.html">
     <link rel="import" href="bower_components/neon-animation/neon-animatable.html">
     <link rel="import" href="bower_components/neon-animation/neon-animations.html">
+    <link rel="import" href="sample-content.html">
 
     <style is="custom-style">
-      neon-animatable {
-        color: white;
-        @apply(--layout-horizontal);
-        @apply(--layout-center-center);
-        @apply(--paper-font-display4);
-      }
-      neon-animatable:nth-child(1) {
-        background: var(--paper-red-500);
-      }
-      neon-animatable:nth-child(2) {
-        background: var(--paper-blue-500);
-      }
-      neon-animatable:nth-child(3) {
-        background: var(--paper-orange-500);
-      }
-      neon-animatable:nth-child(4) {
-        background: var(--paper-green-500);
-      }
-      neon-animatable:nth-child(5) {
-        background: var(--paper-purple-500);
-      }
+        neon-animatable {
+            color: white;
+        @apply(- -layout-horizontal);
+        @apply(- -layout-center-center);
+        @apply(- -paper-font-display4);
+        }
+
+        neon-animatable:nth-child(1) {
+            background: var(--paper-grey-200);
+        }
+
+        neon-animatable:nth-child(2) {
+            background: var(--paper-blue-500);
+        }
+
+        neon-animatable:nth-child(3) {
+            background: var(--paper-orange-500);
+        }
+
+        neon-animatable:nth-child(4) {
+            background: var(--paper-green-500);
+        }
+
+        neon-animatable:nth-child(5) {
+            background: var(--paper-purple-500);
+        }
+
+        paper-scroll-header-panel {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 100px auto;
+        }
+
+
+    #cards {
+      @apply(--layout-vertical);
+      @apply(--center-justified);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    paper-card {
+      width: 80%;
+      margin-bottom: 16px;
+    }
+    .avatar {
+      display: inline-block;
+      height: 64px;
+      width: 64px;
+      border-radius: 50%;
+      background: var(--paper-blue-500);
+      color: white;
+      line-height: 64px;
+      font-size: 30px;
+      text-align: center;
+    }
+    .fancy .title {
+      position: absolute;
+      top: 40px;
+      left: 100px;
+      color: var(--paper-indigo-500);
+    }
+    .fancy img {
+      width: 100%;
+    }
+    .fancy .big {
+      font-size: 30px;
+      padding: 8px 0 16px;
+      color: var(--google-grey-500);
+    }
+    .section-title:before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      border-bottom: 4px solid #dddddd;
+    }
+    .fancy .medium p {
+      font-size: 16px;
+      padding-bottom: 8px;
+    }
     </style>
+    <link rel="import" href="custom-elements.html">
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
 </head>
 <body class="fullbleed layout vertical">
-<paper-header-panel class="flex">
+<paper-scroll-header-panel class="flex" style="z-index: 1" condenses>
     <paper-toolbar role="navigation" class="tall">
         <name-tag id="logo" class="top" flex>
             <h1>GR</h1>
@@ -63,74 +134,99 @@
         <paper-tabs id="tabs" class="top indent" selected="0" role="tablist" horizontal center layout>
             <paper-tab id="Home">Home</paper-tab>
             <paper-tab id="Portfolio">Portfolio</paper-tab>
-            <paper-tab>Contact</paper-tab>
-            <paper-tab>About me</paper-tab>
+            <paper-tab id="Contact">Contact</paper-tab>
         </paper-tabs>
-        <user-view name="Gerardo" class="bottom" id="user-card">
+        <user-view class="bottom" id="user-card">
             <img src="img/profile.jpg"/>
         </user-view>
-                <div class="header-unit bottom">
-    <div id="video-container">
-        <video preload="auto" autoplay loop class="fillWidth">
-            <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
-            <source id="webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">
-            <source id="ogv" src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg">
-            Your browser does not support the video tag. I suggest you upgrade your browser.
-        </video>
-    </div>
-    <!-- end video-container -->
-</div>
-<!-- end .header-unit -->
+        <div class="header-unit bottom">
+            <div id="video-container">
+                <video preload="auto" autoplay loop class="fillWidth">
+                    <source id="mp4" src="http://media.w3.org/2010/05/sintel/trailer.mp4" type="video/mp4">
+                    <source id="webm" src="http://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">
+                    <source id="ogv" src="http://media.w3.org/2010/05/sintel/trailer.ogv" type="video/ogg">
+                </video>
+            </div>
+            <!-- end video-container -->
+        </div>
+        <!-- end .header-unit -->
     </paper-toolbar>
-</paper-header-panel>
 
- <template is="dom-bind">
 
-      <div class="toolbar">
-        <button on-click="_onPrevClick">&lt;&lt;</button>
-        <button on-click="_onNextClick">&gt;&gt;</button>
-      </div>
+    <template is="dom-bind">
 
-      <neon-animated-pages id="pages" class="flex" selected="[[selected]]" entry-animation="[[entryAnimation]]" exit-animation="[[exitAnimation]]">
-        <neon-animatable>
-            <h1>Hello this is my website</h1>
-        </neon-animatable>
-        <neon-animatable>2</neon-animatable>
-        <neon-animatable>
-            <h1>If you want to talk with me</h1>
-        </neon-animatable>
-        <neon-animatable>4</neon-animatable>
-        <neon-animatable>5</neon-animatable>
-      </neon-animated-pages>
+        <neon-animated-pages id="pages" class="flex" selected="[[selected]]" entry-animation="[[entryAnimation]]"
+                             exit-animation="[[exitAnimation]]" style="height: 1800px">
+            <neon-animatable>
+                <div class="container">
+                    <paper-card class='fancy'>
+                        <div class="card-content">
+                            <div class="avatar">:)</div>
+                            <div class="title">
+                                <div class="big section-title">WHO I AM</div>
+                                <div class="medium">
+                                    <p>My name is GERARDO<strong>DE LA ROSA</strong> and I love programming</p>
+                                    <p>I am an enthusiastic System Engineering from Mexico.
+                                        My biggest passion is design applications that can be part of your
+                                    daily life</p>
+                                    <p>I love learning something new everyday by experimenting, I'm curious, I'm happy</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </paper-card>
+
+                </div>
+            </neon-animatable>
+            <neon-animatable>2</neon-animatable>
+            <neon-animatable>
+            </neon-animatable>
+            <neon-animatable>4</neon-animatable>
+            <neon-animatable>5</neon-animatable>
+        </neon-animated-pages>
 
     </template>
+
+
+</paper-scroll-header-panel>
+
+
 <script>
-      var scope = document.querySelector('template[is="dom-bind"]');
-      scope.selected = 0;
-      scope._onPrevClick = function() {
-        this.entryAnimation = 'slide-from-left-animation';
-        this.exitAnimation = 'slide-right-animation';
-        this.selected = this.selected === 0 ? 4 : (this.selected - 1);
-      }
-      scope._onNextClick = function() {
-        this.entryAnimation = 'slide-from-right-animation';
-        this.exitAnimation = 'slide-left-animation';
-        this.selected = this.selected === 4 ? 0 : (this.selected + 1);
-      }
-
-     var tabs = {
-      one: document.querySelector('#Home'),
-      two: document.querySelector('#Portfolio')
-  };
-
-  tabs.one.addEventListener('click', function(e) {
-     scope.entryAnimation = 'slide-from-right-animation';
+    var scope = document.querySelector('template[is="dom-bind"]');
+    scope.selected = 0;
+    var tabs = {
+        one: document.querySelector('#Home'),
+        two: document.querySelector('#Portfolio'),
+        three: document.querySelector('#Contact')
+    };
+    tabs.one.addEventListener('click', function (e) {
+        scope.entryAnimation = 'slide-from-right-animation';
+        scope.exitAnimation = 'slide-left-animation';
+        scope.selected = 0;
+    });
+    tabs.two.addEventListener('click', function (e) {
+        scope.entryAnimation = 'slide-from-right-animation';
+        scope.exitAnimation = 'slide-left-animation';
+        scope.selected = 1;
+    });
+    tabs.three.addEventListener('click', function (e) {
+        scope.entryAnimation = 'slide-from-right-animation';
         scope.exitAnimation = 'slide-left-animation';
         scope.selected = 2;
-  });
+    });
+
+    // custom transformation: scale header's title
+//    var title = document.querySelector('.video-container');
+//    addEventListener('paper-header-transform', function (e) {
+//        var d = e.detail;
+//        var m = d.height - d.condensedHeight;
+//        var scale = Math.max(0.75, (m - d.y) / (m / 0.25) + 0.75);
+//
+//        Polymer.Base.transform('scale(' + scale + ') translateZ(0)', title);
+//    });
 
 
-    </script>
+</script>
 
 </body>
 </html>
