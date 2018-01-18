@@ -7,7 +7,7 @@ minimalistic with all content.
 - About me
 - Work Experience
 - Projects
-- Courses
+- Skills
 - Social networks
 
 

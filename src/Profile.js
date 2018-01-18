@@ -6,8 +6,11 @@ import { Link } from 'react-router-dom';
 class Profile extends Component {
 
   render() {
+    const {personal, resume} = this.props;
     return (
       <div>
+        <BasicInfo personal={personal}/>
+        <Resume resume={resume}/>
       </div>
     )
   }

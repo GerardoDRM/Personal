@@ -7,13 +7,17 @@ class App extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      profile: {},
+      resume: []
+    };
   }
 
   render() {
     return (
       <div className="App">
         <Route exact path='/' render={() => (
-          <Profile/>
+          <Profile {...this.state} />
         )}/>
       </div>
     );
