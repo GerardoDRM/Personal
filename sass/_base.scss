@@ -1,0 +1,35 @@
+body,
+html, #root {
+    width: 100%;
+    height: 100%;
+}
+
+
+.resume {
+  background: $background-gray;
+  width: 100%;
+  height: 100%;
+  padding: 15px 30px;
+  h2 {
+    font-family: $font-family--primary;
+    font-size: 2em;
+    font-weight: 700;
+    color: $title-color;
+  }
+  p {
+    color: $paragraph-color;
+  }
+}
+
+
+.card {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 1;
+  position: relative;
+  background: #fff;
+  border-radius: 2px;
+  box-sizing: border-box;
+}

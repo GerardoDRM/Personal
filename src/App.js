@@ -9,7 +9,9 @@ class App extends Component {
     super(props);
     this.state = {
       profile: {},
-      resume: []
+      resume: {
+        "bio": "Enthusiastic Full Stack and Android developer specialist with expertise in problem solving to provide optimized database models, exceptional Restful services, optimized request on front-end, adaptive applications and excellent mobile apps integrations. Current work includes managing back-end processes. Passionate about emerging technology, machine learning, computer vision, distributed systems and databases. Enjoys collaborative teamwork and leadership coaching."
+      }
     };
   }
 

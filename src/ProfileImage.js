@@ -12,4 +12,4 @@ class ProfileImage extends Component {
     )
   }
 }
-module.exports = ProfileImage;
+export default ProfileImage;

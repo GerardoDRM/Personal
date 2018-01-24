@@ -8,14 +8,14 @@ class BasicInfo extends Component {
     const {profile} = this.props;
     return (
       <div>
-        <h1>{profile.name}</h1>
-        <ProfileImage img={profile.img}/>
+        <h1></h1>
+        <ProfileImage img=""/>
         <p>Message</p>
         <div>
-          {profile.social.map(s => (<img src="" />))}
+          {/*profile.social.map(s => (<img src="" />))*/}
         </div>
       </div>
     )
   }
 }
-module.exports = BasicInfo;
+export default BasicInfo;

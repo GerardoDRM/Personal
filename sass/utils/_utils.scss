@@ -1,0 +1,15 @@
+// Import if Google Font URL is defined
+@if variable_exists(font-url--google) {
+  @import url($font-url--google);
+}
+
+// Import material icons
+@if variable_exists(material--icons) {
+  @import url($material--icons)
+}
+
+// Calculate em values
+// This functions convert from px to em
+@function  em($target, $context: $base__font-size ) {
+  @return ($target / $context) * 1em;
+}

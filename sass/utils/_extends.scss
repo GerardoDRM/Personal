@@ -1,0 +1,12 @@
+.flex-vertical--aligment {
+  display: -webkit-inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-flex-pack: center;
+  -webkit-justify-content: center;
+  -webkit-flex-align: center;
+  -webkit-align-items: center;
+  vertical-align: top;
+}
