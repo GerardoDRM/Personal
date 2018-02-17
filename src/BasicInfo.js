@@ -7,7 +7,7 @@ class BasicInfo extends Component {
   render() {
     const {profile} = this.props;
     return (
-      <div>
+      <div className="profile-container">
         <h1></h1>
         <ProfileImage img=""/>
         <p>Message</p>

@@ -15,15 +15,36 @@ class Resume extends Component {
       </div>
       <div>
         <h2>Work Experience</h2>
-        {/*experience.map(e => (<ExperienceCard/>))*/}
+        {
+          resume.work.map(e => (<div>
+            <img src=""/>
+            <div>
+              <h2>{e.company}</h2>
+              <h4>{e.position}</h4>
+            </div>
+          </div>))
+        }
       </div>
       <div>
         <h2>Projects</h2>
-        {/*projects.map(e => (<ProjectsCard/>))*/}
+        {
+          resume.projects.map(e => (<div>
+            <img src=""/>
+            <div>
+              <h2>{e.name}</h2>
+              <h4>{e.time}</h4>
+              <p>{e.description}</p>
+            </div>
+          </div>))
+        }
       </div>
       <div>
         <h2>Skills</h2>
-        {/*Skills.map(e => (<div/>))*/}
+        {
+          resume.skills.map(e => (<div>
+            {e.title}
+          </div>))
+        }
       </div>
     </div>)
   }

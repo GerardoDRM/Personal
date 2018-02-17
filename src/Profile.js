@@ -8,7 +8,7 @@ class Profile extends Component {
   render() {
     const {personal, resume} = this.props;
     return (
-      <div>
+      <div className="main-container">
         <BasicInfo personal={personal}/>
         <Resume resume={resume}/>
       </div>
