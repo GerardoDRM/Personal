@@ -1,0 +1,10 @@
+.chips-container {
+  display: inline-flex;
+  .chips {
+    width: auto;
+    padding: 10px;
+    margin: 2px;
+    color: white;
+    @include border-radius(5px);
+  }
+}

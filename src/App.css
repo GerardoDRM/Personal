@@ -20,7 +20,14 @@ html, #root {
   width: 100%;
   height: 100%; }
 
+.main-container {
+  display: flex; }
+
+.profile-container {
+  flex-basis: 50%; }
+
 .resume {
+  flex-basis: 50%;
   background: #EEEEEE;
   width: 100%;
   height: 100%;
@@ -43,5 +50,17 @@ html, #root {
   background: #fff;
   border-radius: 2px;
   box-sizing: border-box; }
+
+.chips-container {
+  display: inline-flex; }
+  .chips-container .chips {
+    width: auto;
+    padding: 10px;
+    margin: 2px;
+    color: white;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px; }
 
 /*# sourceMappingURL=App.css.map */

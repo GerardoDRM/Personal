@@ -1,8 +1,16 @@
 import React, {Component, PropTypes} from 'react';
 import {Link} from 'react-router-dom';
-// import ExperienceCard from './ExperienceCard';
+
 
 class Resume extends Component {
+
+
+  randomBackground = () => {
+    const colors = ["#880E4F", "#880E4F", "#304FFE", "#2962FF", "#FFAB00"]
+    return {
+      backgroundColor: colors[Math.floor(Math.random()*colors.length)]
+    }
+  }
 
   render() {
     const {resume} = this.props
@@ -40,11 +48,13 @@ class Resume extends Component {
       </div>
       <div>
         <h2>Skills</h2>
-        {
-          resume.skills.map(e => (<div>
-            {e.title}
-          </div>))
-        }
+        <div className="chips-container">
+          {
+            resume.skills.map(e => (<div className="chips" style={this.randomBackground()}>
+              {e.title}
+            </div>))
+          }
+        </div>
       </div>
     </div>)
   }
